@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PROGRAMACION CONCURRENTE</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    body {
+      background-image: url('hilo.jpg');
+      background-size: cover;
+      text-align: center;
+      color: white;
+    }
+    .container {
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    .code-snippet {
+      background-color: #295264;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      text-align: left;
+    }
+  </style>
+</head>
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="primer_corte.html">Primer Corte</a></li>
+        <li><a href="segundo_corte.html">Segundo Corte</a></li>
+        <li><a href="tercer_corte.html">Tercer Corte</a></li>
+    </ul>
+</nav>
+<body>
+  <div class="container">
+    <h1>PROGRAMACION CONCURRENTE</h1>
+    <div class="description">
+    <p>La programación concurrente permite desarrollar software que ejecuta eventos o circunstancias que están sucediendo o existen al mismo tiempo</p>
+    </div>
+    <div class="code-snippet">
+      <h2>Hilo</h2>
+      <p>Son unidades de ejecución más pequeñas dentro de un proceso que pueden ejecutarse de forma independiente entre sí. Permiten que un programa realice múltiples tareas simultáneamente, dividiendo su ejecución en partes más pequeñas que pueden ejecutarse en paralelo.</p>
+      <pre>
+        <code>
+          public class EjemploHilo implements Runnable {
+    
+            public void run() {
+                // El código que se ejecutará en el hilo
+                for (int i = 0; i < 5; i++) {
+                    System.out.println("Hilo en ejecución: " + i);
+                    try {
+                        Thread.sleep(1000); // Espera de 1 segundo
+                    } catch (InterruptedException e) {
+                        System.out.println("El hilo fue interrumpido.");
+                    }
+                }
+            }
+            
+            public static void main(String[] args) {
+                // Crear una instancia del objeto que implementa Runnable
+                EjemploHilo ejemploHilo = new EjemploHilo();
+                
+                // Crear un objeto Thread y pasarle la instancia Runnable
+                Thread hilo = new Thread(ejemploHilo);
+                
+                // Iniciar la ejecución del hilo
+                hilo.start();
+                
+                // Puedes continuar ejecutando más código aquí mientras el 
+                hilo se está ejecutando en segundo plano
+                
+                try {
+                    // Esperar a que el hilo termine antes de que el 
+                    programa principal termine
+                    hilo.join();
+                } catch (InterruptedException e) {
+                    System.out.println("El hilo principal fue interrumpido.");
+                }
+                
+                System.out.println("El programa ha finalizado.");
+            }
+        }
+        
+        </code>
+      </pre>
+      <p>En este ejemplo, creamos una clase EjemploHilo que implementa la interfaz Runnable. El método run() contiene el código que será ejecutado por el hilo. En el método main, creamos un nuevo hilo (Thread) pasándole una instancia de EjemploHilo. Luego, iniciamos el hilo con hilo.start() y esperamos a que el hilo termine su ejecución con hilo.join() antes de que el programa principal finalice.</p>
+    </div>
+  </div>
+  
+</div>
+<a href="index.html" class="button">Inicio</a>
+<a href="primer_corte.html" class="button">Primer Corte</a>
+<a href="segundo_corte.html" class="button">Segundo Corte</a>
+</div>
+<div class="info">
+    <p>Estudiante: Jesus David Arbelaez Castro</p>
+    <p>Código: 1003944590</p>
+    <p>Correo: jesus.arbelaez00@usc.edu.co</p>
+    <a href="https://acortar.link/J5AKgg" class="enlace-estilizado">Repositorio Estudiante </a>
+    <p>Profesor: Diego Fernando Loaiza Buitrago</p>
+    <p>Correo: diego.loaiza02@usc.edu.co</p>
+    <a href="https://acortar.link/d86LPR" class="enlace-estilizado">Repositorio Profesor </a>
+</div>
+</body>
+</html>
